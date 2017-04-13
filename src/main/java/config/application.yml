@@ -9,3 +9,5 @@ spring.http.multipart.maxRequestSize: 100Mb
 logging.config: 
    classpath: logback.xml
 logging.path: C:/work/temp/log
+logging.level.org.springframework.web: INFO
+# logging.level.org.hibernate: ERROR

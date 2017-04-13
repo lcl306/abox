@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>index</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/surface.css" rel="stylesheet" />
+		<style>
+			
+		</style>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js" ></script>
+		<script type="text/javascript" src="js/react15.min.js" ></script>
+	    <script type="text/javascript" src="js/react-dom15.min.js" ></script>
+		<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+		<script type="text/jsx" src="abox/tail.js" ></script>
+		<script type="text/javascript">
+			mui.init({});
+			
+			
+			$(function(){
+				
+			});
+			
+		</script>
+	</head>
+
+	<body>
+		<div style="margin-top: 5px;">
+		<div class="mui-input-row mui-search">
+		    <input type="search" class="mui-input-clear mui-input-speech" placeholder="委托单号">
+		</div>
+		</div>
+		<div id="tail"></div>
+		
+		<script type="text/babel">
+			ReactDOM.render(
+			    <Tail showAppend="true" showAb="true" active="mainNav"/>,
+			    document.getElementById("tail")
+			);
+		</script>
+		
+	</body>
+	
+</html>
+
+
