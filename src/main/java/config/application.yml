@@ -1,0 +1,11 @@
+# classPath=src/main/java，在classPath下加application.yml或application.properties也可以，但优先级低
+# classPath/config/下的配置文件优先级高
+
+#单个文件上传最大
+spring.http.multipart.maxFileSize: 10Mb  
+#单次文件上传最大
+spring.http.multipart.maxRequestSize: 100Mb
+
+logging.config: 
+   classpath: logback.xml
+logging.path: C:/work/temp/log
