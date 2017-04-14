@@ -1,6 +1,8 @@
 # classPath=src/main/java，在classPath下加application.yml或application.properties也可以，但优先级低
 # classPath/config/下的配置文件优先级高
 
+javacDefaultEncoding: UTF-8
+spring.http.encoding.charset: utf8
 #单个文件上传最大
 spring.http.multipart.maxFileSize: 10Mb  
 #单次文件上传最大
@@ -11,3 +13,8 @@ logging.config:
 logging.path: C:/work/temp/log
 logging.level.org.springframework.web: INFO
 # logging.level.org.hibernate: ERROR
+
+server.port: 8080
+#server.address: 
+#单位秒
+server.session-timeout: 1800

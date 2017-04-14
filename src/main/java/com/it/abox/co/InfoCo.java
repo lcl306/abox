@@ -13,17 +13,19 @@ import com.it.abox.util.CoUtil;
  * 所有的方法均返回@ResponseBody，可以使用@RestController
  * */
 @RestController
+@RequestMapping("/abox")
 public class InfoCo {
 	
-	@RequestMapping("/abox/info")
+	@RequestMapping("/getInfo")
 	public String info(HttpServletRequest request, HttpServletResponse response){
-		return SetUtil.info();
+		//return SetUtil.info();
+		return "信息画面";
 	}
 	
 	/**
 	 * 自动变为json数据
 	 * */
-	@RequestMapping("/abox/snapshotInfo")
+	@RequestMapping("/snapshotInfo")
 	public InfoDto snapshotInfo(HttpServletRequest request, HttpServletResponse response){
 		InfoDto dto = new InfoDto();
 		dto.setIp(SetUtil.getUrl());
@@ -32,7 +34,7 @@ public class InfoCo {
 		return dto;
 	}
 	
-	@RequestMapping("/abox/sw")
+	@RequestMapping("/sw")
 	public String sw(HttpServletRequest request, HttpServletResponse response){
 		if(request.getParameter("switch").equals("true")){
 			SetUtil.debug(true);
@@ -42,7 +44,7 @@ public class InfoCo {
 		return "";
 	}
 	
-	@RequestMapping("/abox/snapshotImage")
+	@RequestMapping("/snapshotImage")
 	public void snapshotImage(HttpServletRequest request, HttpServletResponse response){
 		CoUtil.image(response, SetUtil.snapshot(), "jpg");
 	}

@@ -1,0 +1,8 @@
+app.name: 系统1
+app.id: 123456789
+app.list[0]: 信息1
+app.list[1]: 信息2
+app.map.key1: 值1
+app.map.key2: 值2
+app.auth.username: test
+app.auth.password: 123456

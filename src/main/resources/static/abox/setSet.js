@@ -20,7 +20,8 @@ var SetSet = React.createClass({
 	set : function(setId, setName, setAttr, setVal){
 		var info ={name: document.getElementById(setName).value, attr: document.getElementById(setAttr).value, val:document.getElementById(setVal).value};
 		var self = this;
-		$.post(this.props.project+"/abox/set", info, function(rtn){
+		console.info(info);
+		$.post(this.props.project+"/abox/setting", info, function(rtn){
 			self.close(setId);
 		});
 	},

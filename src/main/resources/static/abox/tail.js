@@ -5,6 +5,7 @@ var Tail = React.createClass({
 	    }.bind(this), 100);
 	},
 	go : function(url, event){
+		if(this.props.urlPre) url = this.props.urlPre+url;
 		document.location.href=url;
 	},
 	render : function(){

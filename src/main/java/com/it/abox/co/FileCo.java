@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -12,12 +13,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.it.abox.config.Context;
 import com.it.abox.util.CoUtil;
 
 @Controller
+@RequestMapping("/abox")
 public class FileCo {
 	
-	@RequestMapping("/abox/upload")
+	@Resource
+	private Context context;
+	
+	@RequestMapping("/upload")
 	public void upload(HttpServletRequest request, HttpServletResponse response){
 		List<MultipartFile> files = CoUtil.getFiles(request, "file");
 		String filename = request.getParameter("filename");
@@ -36,7 +42,7 @@ public class FileCo {
 		}
 	}
 	
-	@RequestMapping("/abox/upload2")
+	@RequestMapping("/upload2")
 	public void upload2(HttpServletRequest request, HttpServletResponse response){
 		System.out.println(CoUtil.decode(request.getParameter("param1")));
 		System.out.println(CoUtil.decode(request.getParameter("param2")));
