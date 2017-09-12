@@ -42,7 +42,6 @@ public class HttpClientUtil {
 	static final String CODE = "UTF-8";
 	static final String JSON_TYPE = "application/json";
 	static final String TEXT_TYPE = "text/plain";
-	static final String UPLOAD_FILENAME = "files";
 	
 	static private RequestConfig requestConfig = RequestConfig.custom()  
             .setSocketTimeout(15000)  
@@ -88,23 +87,24 @@ public class HttpClientUtil {
         }  
         return sendHttpPost(httpPost);  
     }  
-      
+    
     /** 
      * 发送 post请求（带文件） 
      * @param httpUrl 地址 
-     * @param maps 参数 
-     * @param fileLists 附件 
+     * @param maps<name, value> 参数 
+     * @param files<fileName, file> 附件 
      */  
-    public static byte[] sendHttpPost(String httpUrl, Map<String, String> maps, List<File> fileLists) {  
+    public static byte[] sendHttpPost(String httpUrl, Map<String, String> maps, Map<String, File> files) {  
         HttpPost httpPost = new HttpPost(httpUrl);// 创建httpPost    
         MultipartEntityBuilder meBuilder = MultipartEntityBuilder.create();
         for (String key : maps.keySet()) {  
             meBuilder.addPart(key, new StringBody(maps.get(key), ContentType.MULTIPART_FORM_DATA));  
         }
         meBuilder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
-        for(File file : fileLists) {  
+        for(String fileName : files.keySet()) {
+        	File file = files.get(fileName);
             FileBody fileBody = new FileBody(file);  
-            meBuilder.addPart(UPLOAD_FILENAME, fileBody);  
+            meBuilder.addPart(fileName, fileBody);  
         }  
         HttpEntity entity = meBuilder.build();  
         httpPost.setEntity(entity);  
@@ -210,7 +210,7 @@ public class HttpClientUtil {
             response = httpClient.execute(httpPost); 
             in = doResponse(response);
 			bs = readStream(in);
-        } catch (Exception e) {  
+        } catch (Throwable e) {  
             e.printStackTrace();  
         } finally {  
             close(httpClient, response, in);
